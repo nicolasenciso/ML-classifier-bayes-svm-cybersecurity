@@ -1,0 +1,88 @@
+=================== FROM ORIGINAL DATA WITH 8 FEATURES ==========
+RESULTS: 
+--------------------------------------
+18320
+Matched: 11900 / 18320
+Ratio: 0.649563318777
+
+*** ACCURACY GAUSSIAN BAYES **************
+0.649563318777
+RESULTS: 
+--------------------------------------
+18320
+Matched: 12088 / 18320
+Ratio: 0.659825327511
+
+*** ACCURACY MULTINOMIAL BAYES **************
+0.659825327511
+
+ ***** RESULTS SVM LINEAR ********
+
+[[ 1923  5484]
+ [  448 10465]]
+             precision    recall  f1-score   support
+
+  anomalous       0.81      0.26      0.39      7407
+     normal       0.66      0.96      0.78     10913
+
+avg / total       0.72      0.68      0.62     18320
+
+
+ ***** RESULTS SVM GAUSSIAN C=default********
+
+[[4661 2746]
+ [1043 9870]]
+             precision    recall  f1-score   support
+
+  anomalous       0.82      0.63      0.71      7407
+     normal       0.78      0.90      0.84     10913
+
+avg / total       0.80      0.79      0.79     18320
+
+***** RESULTS SVM GAUSSIAN C=1.11 ********
+
+[[4764 2851]
+ [ 964 9741]]
+             precision    recall  f1-score   support
+
+  anomalous       0.83      0.63      0.71      7615
+     normal       0.77      0.91      0.84     10705
+
+avg / total       0.80      0.79      0.79     18320
+
+***** RESULTS SVM GAUSSIAN C=1.11 gamma=0.1********
+
+[[4769 2754]
+ [ 971 9826]]
+             precision    recall  f1-score   support
+
+  anomalous       0.83      0.63      0.72      7523
+     normal       0.78      0.91      0.84     10797
+
+avg / total       0.80      0.80      0.79     18320
+
+
+ ***** RESULTS SVM GAUSSIAN C=1.11 gamma=0.09********
+
+[[4653 2945]
+ [ 917 9805]]
+             precision    recall  f1-score   support
+
+  anomalous       0.84      0.61      0.71      7598
+     normal       0.77      0.91      0.84     10722
+
+avg / total       0.80      0.79      0.78     18320
+
+
+ ***** RESULTS SVM SIGMOID ********
+
+[[    0  7407]
+ [    0 10913]]
+/home/superexec/.local/lib/python2.7/site-packages/sklearn/metrics/classification.py:1135: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+             precision    recall  f1-score   support
+
+  anomalous       0.00      0.00      0.00      7407
+     normal       0.60      1.00      0.75     10913
+
+avg / total       0.35      0.60      0.44     18320

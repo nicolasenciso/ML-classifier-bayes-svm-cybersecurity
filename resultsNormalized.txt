@@ -1,0 +1,54 @@
+ ***** RESULTS SVM GAUSSIAN C=1********
+
+[[ 1867  5664]
+ [  651 10138]]
+             precision    recall  f1-score   support
+
+  anomalous       0.74      0.25      0.37      7531
+     normal       0.64      0.94      0.76     10789
+
+avg / total       0.68      0.66      0.60     18320
+
+***** RESULTS SVM GAUSSIAN c gamma default ********
+
+[[ 1868  5688]
+ [  646 10118]]
+             precision    recall  f1-score   support
+
+  anomalous       0.74      0.25      0.37      7556
+     normal       0.64      0.94      0.76     10764
+
+avg / total       0.68      0.65      0.60     18320
+
+ ***** RESULTS SVM GAUSSIAN C=1.1********
+
+[[ 1925  5693]
+ [  664 10038]]
+             precision    recall  f1-score   support
+
+  anomalous       0.74      0.25      0.38      7618
+     normal       0.64      0.94      0.76     10702
+
+avg / total       0.68      0.65      0.60     18320
+
+***** RESULTS SVM GAUSSIAN C=1.11********
+
+[[ 1922  5654]
+ [  686 10058]]
+             precision    recall  f1-score   support
+
+  anomalous       0.74      0.25      0.38      7576
+     normal       0.64      0.94      0.76     10744
+
+avg / total       0.68      0.65      0.60     18320
+
+ ***** RESULTS SVM GAUSSIAN C=1.11 gamma=1********
+
+[[ 1917  5657]
+ [  623 10123]]
+             precision    recall  f1-score   support
+
+  anomalous       0.75      0.25      0.38      7574
+     normal       0.64      0.94      0.76     10746
+
+avg / total       0.69      0.66      0.60     18320
