@@ -1,0 +1,132 @@
+****************************
+BAYES CLASSIFIER
+
+                ORIGINAL DATA:$$$$$$$$$   
+                        --------------------------------------
+                        18320
+                        Matched: 11758 / 18320
+                        Ratio: 0.641812227074
+
+                        *** ACCURACY GAUSSIAN BAYES **************
+                        0.6418122270742358
+
+                        18320
+                        Matched: 11913 / 18320
+                        Ratio: 0.650272925764
+
+                        *** ACCURACY MULTINOMIAL BAYES **************
+                        0.6502729257641922
+
+                NORMALIZED DATA:$$$$$$$$$  
+
+                        18320
+                        Matched: 12215 / 18320
+                        Ratio: 0.666757641921
+
+                        *** ACCURACY GAUSSIAN BAYES **************
+                        0.6667576419213974
+
+                        18320
+                        Matched: 10744 / 18320
+                        Ratio: 0.586462882096
+
+                        *** ACCURACY MULTINOMIAL BAYES **************
+                        0.5864628820960699
+
+
+SVM CLASSIFIER
+
+    LINEAR CLASSIFIER
+
+                ORIGINAL DATA:$$$$$$$$$   
+                         ***** RESULTS SVM LINEAR ********
+
+                        [[ 1880  5703]
+                        [  418 10319]]
+                                precision    recall  f1-score   support
+
+                        anomalous    0.82      0.25      0.38      7583
+                        normal       0.64      0.96      0.77     10737
+
+                        avg / total  0.72      0.67      0.61     18320
+
+                         ***** RESULTS SVM LINEAR original data********
+
+                        [[ 1868  5648]
+                        [  454 10350]]
+                                precision    recall  f1-score   support
+
+                        anomalous    0.80      0.25      0.38      7516
+                        normal       0.65      0.96      0.77     10804
+
+                        avg / total  0.71      0.67      0.61     18320
+
+
+                NORMALIZED DATA:$$$$$$$$$ 
+
+                        ***** RESULTS SVM LINEAR ********
+
+                        [[2458 5055]
+                        [1010 9797]]
+                                precision    recall  f1-score   support
+
+                        anomalous    0.71      0.33      0.45      7513
+                        normal       0.66      0.91      0.76     10807
+
+                        avg / total  0.68      0.67      0.63     18320
+
+                            ***** RESULTS SVM LINEAR normalized data********
+
+                        [[1737 3335]
+                        [ 689 6452]]
+                                precision    recall  f1-score   support
+
+                        anomalous    0.72      0.34      0.46      5072
+                        normal       0.66      0.90      0.76      7141
+
+                        micro avg       0.67      0.67      0.67     12213
+                        macro avg       0.69      0.62      0.61     12213
+                        weighted avg    0.68      0.67      0.64     12213
+
+
+   GAUSSIAN CLASSIFIER
+        
+                ORIGINAL DATA: $$$$$$$$$$$$
+                         ***** RESULTS SVM GAUSSIAN C=1.11 gamma=0.09*****original data***
+
+                        [[4710 2794]
+                        [1010 9806]]
+                        precision    recall  f1-score   support
+
+                        anomalous    0.82      0.63      0.71      7504
+                        normal       0.78      0.91      0.84     10816
+
+                        micro avg    0.79      0.79      0.79     18320
+                        macro avg    0.80      0.77      0.77     18320
+                        weighted avg 0.80      0.79      0.79     18320
+
+                        ***** RESULTS SVM GAUSSIAN C=1.11 gamma=0.09********
+
+                        [[4653 2945]
+                        [ 917 9805]]
+                                precision    recall  f1-score   support
+
+                        anomalous    0.84      0.61      0.71      7598
+                        normal       0.77      0.91      0.84     10722
+
+                        avg / total  0.80      0.79      0.78     18320
+
+
+                NORMALIZED DATA:$$$$$$$$$$
+                 ***** RESULTS SVM GAUSSIAN C=1.11 gamma=0.09*****normalized data***
+
+                        [[ 1760  5590]
+                        [  573 10397]]
+                                precision    recall  f1-score   support
+
+                        anomalous    0.75      0.24      0.36      7350
+                        normal       0.65      0.95      0.77     10970
+
+                        micro avg    0.66      0.66      0.66     18320
+                        macro avg    0.70      0.59      0.57     18320
+                        weighted avg 0.69      0.66      0.61     18320

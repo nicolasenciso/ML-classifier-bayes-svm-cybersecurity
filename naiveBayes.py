@@ -85,40 +85,61 @@ def bayesClassifier(X_entreno, y_entreno, X_testeo, y_testeo):
     print(accuracy)
 
 def SVMclassifier(X_entreno,y_entreno,X_testeo, y_testeo):
-    """c = 1
-    degree = 3
-    svclassifier = SVC(kernel='linear',C=c)
+    #-----------------------------------------------------------------------------------
+    """svclassifier = SVC(kernel='linear')
     svclassifier.fit(X_entreno,y_entreno)
     y_pred = svclassifier.predict(X_testeo)
-    print("\n ***** RESULTS SVM LINEAR ********"+"C="+str(c)+" degree="+str(degree)+"\n")
+    print("\n ***** RESULTS SVM LINEAR ********\n")
     print(confusion_matrix(y_testeo,y_pred))  
-    print(classification_report(y_testeo,y_pred)) """
-
-    """svclassifier = SVC(kernel='poly', degree=8)
+    print(classification_report(y_testeo,y_pred)) 
+    """
+    #----------------------------------------------------------------------------------------------------
+    """
+    svclassifier = SVC(kernel='poly')
     svclassifier.fit(X_entreno,y_entreno)
     y_pred = svclassifier.predict(X_testeo)
     print("\n ***** RESULTS SVM POLYNOMIAL ********\n")
     print(confusion_matrix(y_testeo,y_pred))  
-    print(classification_report(y_testeo,y_pred))"""
-
-    c = 1.11
-    gamma = 1
+    print(classification_report(y_testeo,y_pred))
+    """
+    
+    degree = 8
+    svclassifier = SVC(kernel='poly', degree=degree)
+    svclassifier.fit(X_entreno,y_entreno)
+    y_pred = svclassifier.predict(X_testeo)
+    print("\n ***** RESULTS SVM POLYNOMIAL degree="+str(degree)+"********\n")
+    print(confusion_matrix(y_testeo,y_pred))  
+    print(classification_report(y_testeo,y_pred))
+    
+    #-----------------------------------------------------------------------------------------------------
+    """
     svclassifier = SVC(kernel='rbf')
     svclassifier.fit(X_entreno,y_entreno)
     y_pred = svclassifier.predict(X_testeo)
-    print("\n ***** RESULTS SVM GAUSSIAN C="+str(c)+" gamma="+str(gamma)+"********\n")
-    #print("\n ***** RESULTS SVM GAUSSIAN C="+str(c)+"********\n")
-    #print("\n ***** RESULTS SVM GAUSSIAN ********\n")
+    print("\n ***** RESULTS SVM GAUSSIAN ********\n")
     print(confusion_matrix(y_testeo,y_pred))  
     print(classification_report(y_testeo,y_pred))
-
-    """svclassifier = SVC(kernel='sigmoid')
+    """
+    """
+    c = 1.11
+    gamma = 0.1
+    svclassifier = SVC(kernel='rbf', C=c, gamma=gamma)
+    svclassifier.fit(X_entreno,y_entreno)
+    y_pred = svclassifier.predict(X_testeo)
+    print("\n ***** RESULTS SVM GAUSSIAN C="+str(c)+" gamma="+str(gamma)+"********\n")
+    print(confusion_matrix(y_testeo,y_pred))  
+    print(classification_report(y_testeo,y_pred))
+    """
+    
+    #---------------------------------------------------------------------------------------------
+    """
+    svclassifier = SVC(kernel='sigmoid')
     svclassifier.fit(X_entreno,y_entreno)
     y_pred = svclassifier.predict(X_testeo)
     print("\n ***** RESULTS SVM SIGMOID ********\n")
-    print(confusion_matrix(y_testeo,y_pred))  
-    print(classification_report(y_testeo,y_pred))"""
-
+    print(confusion_matrix(y_testeo,y_pred)) 
+    print(classification_report(y_testeo,y_pred))
+    """
 
 #original data rawData
 url = open("rawData.csv","r")
@@ -136,7 +157,7 @@ y_testeo = y_test
 #from raw data
 print("\n=================== FROM ORIGINAL DATA WITH 8 FEATURES ==========\n")
 #bayesClassifier(X_entreno,y_entreno,X_testeo,y_testeo)
-#SVMclassifier(X_entreno,y_entreno,X_testeo,y_testeo)
+SVMclassifier(X_entreno,y_entreno,X_testeo,y_testeo)
 
 normalizedData()
 url = open("normalizedData.csv","r")
@@ -153,5 +174,5 @@ y_testeo = y_test
 
 #from normalized data  Xi / sum(Xn)
 print("\n=================== FROM NORMALIZED DATA WITH 8 FEATURES ==========\n")
-bayesClassifier(X_entreno,y_entreno,X_testeo,y_testeo)
+#bayesClassifier(X_entreno,y_entreno,X_testeo,y_testeo)
 SVMclassifier(X_entreno,y_entreno,X_testeo,y_testeo)
