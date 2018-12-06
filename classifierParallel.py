@@ -367,3 +367,4 @@ threadRanForNormalized = threading.Thread(target=randomForest, args=(X_entreno,y
 
 #threadGaussOrigin.start()
 #plt.show()
+print("FINISHED")
