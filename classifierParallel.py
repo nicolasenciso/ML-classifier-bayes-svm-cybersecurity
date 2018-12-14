@@ -1,4 +1,3 @@
-import threading
 import  pandas as  pd
 import  numpy  as  np
 import matplotlib.pyplot as plt
@@ -68,10 +67,10 @@ def bayesClassifierGaussian(X_entreno, y_entreno, X_testeo, y_testeo, name):
     listPredicted = predicted_labels.tolist()
     listGivenTest = y_testeo.tolist()
     accuracy = accuracy_score(y_testeo, predicted_labels)
-    print("****** PREDICTED MODEL ********")
+    """print("****** PREDICTED MODEL ********")
     print(predicted_labels)
     print("********* TEST MODEL ************")
-    print(y_testeo)
+    print(y_testeo)"""
     print("\n*** ACCURACY GAUSSIAN BAYES **************")
     print(accuracy)
     print("\n ***** RESULTS BAYES GAUSSIAN "+str(name)+"********\n")
@@ -81,15 +80,10 @@ def bayesClassifierGaussian(X_entreno, y_entreno, X_testeo, y_testeo, name):
     #print(y_pred_prob)
     y_pred_prob = model.predict_proba(X_testeo)[:,1]
     fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
-    plt.title('ROC curve for Bayes Gaussian')
-    plt.xlabel('False Positive Rate (1 - Specificity)')
-    plt.ylabel('True Positive Rate (Sensitivity)')
-    plt.grid(True)
-    plt.savefig('bayesGuss'+str(name)+'.png')
     auc = roc_auc_score(y_testeo, y_pred_prob)
     print("****** AUC BAYES GAUSSIAN "+str(name)+" *********")
     print(auc)
+    return (fpr,tpr)
 
 def bayesClassifierMultinomial(X_entreno, y_entreno, X_testeo, y_testeo,name):
     model = MultinomialNB()
@@ -105,15 +99,10 @@ def bayesClassifierMultinomial(X_entreno, y_entreno, X_testeo, y_testeo,name):
     print(classification_report(y_testeo,predicted_labels))
     y_pred_prob = model.predict_proba(X_testeo)[:,1]
     fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
-    plt.title('ROC curve for Bayes Multinomial')
-    plt.xlabel('False Positive Rate (1 - Specificity)')
-    plt.ylabel('True Positive Rate (Sensitivity)')
-    plt.grid(True)
-    plt.savefig('bayesMUlti'+str(name)+'.png')
     auc = roc_auc_score(y_testeo, y_pred_prob)
     print("****** AUC BAYES MULTINOMIAL "+str(name)+" *********")
     print(auc)
+    return (fpr,tpr)
 
 
 def SVMlineal(X_entreno,y_entreno,X_testeo, y_testeo,name):
@@ -128,15 +117,10 @@ def SVMlineal(X_entreno,y_entreno,X_testeo, y_testeo,name):
     print(accuracy)
     y_pred_prob = svclassifier.predict_proba(X_testeo)[:,1]
     fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
-    plt.title('ROC curve for SVM linear')
-    plt.xlabel('False Positive Rate (1 - Specificity)')
-    plt.ylabel('True Positive Rate (Sensitivity)')
-    plt.grid(True)
-    plt.savefig('SVMlinear'+str(name)+'.png')
     auc = roc_auc_score(y_testeo, y_pred_prob)
     print("****** AUC SVM LINEAR "+str(name)+" *********")
     print(auc)
+    return (fpr,tpr)
 
     
     
@@ -152,15 +136,10 @@ def SVMpolynomial(X_entreno,y_entreno,X_testeo, y_testeo, name):
     print(accuracy)
     y_pred_prob = svclassifier.predict_proba(X_testeo)[:,1]
     fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
-    plt.title('ROC curve for SVM polynomial')
-    plt.xlabel('False Positive Rate (1 - Specificity)')
-    plt.ylabel('True Positive Rate (Sensitivity)')
-    plt.grid(True)
-    plt.savefig('SVMpoly'+str(name)+'.png')
     auc = roc_auc_score(y_testeo, y_pred_prob)
     print("****** AUC SVM POLYNOMIAL "+str(name)+" *********")
     print(auc)
+    return (fpr,tpr)
     
     
     """degree = 8
@@ -175,40 +154,13 @@ def SVMpolynomial(X_entreno,y_entreno,X_testeo, y_testeo, name):
     print(accuracy)
     y_pred_prob = svclassifier.predict_proba(X_testeo)[:,1]
     fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
-    plt.title('ROC curve for SVM polynomial')
-    plt.xlabel('False Positive Rate (1 - Specificity)')
-    plt.ylabel('True Positive Rate (Sensitivity)')
-    plt.grid(True)
-    plt.savefig('SVMploy'+str(name)+'.png')
     auc = roc_auc_score(y_testeo, y_pred_prob)
     print("****** AUC SVM POLYNOMIAL "+str(name)+" *********")
     print(auc)
+    return (fpr,tpr)
     """
     
 def SVMgaussian(X_entreno,y_entreno,X_testeo, y_testeo, name):
-    """svclassifier = SVC(kernel='rbf', probability=True)
-    svclassifier.fit(X_entreno,y_entreno)
-    y_pred = svclassifier.predict(X_testeo)
-    print("\n ***** RESULTS SVM GAUSSIAN ***"+str(name)+"*****\n")
-    print(confusion_matrix(y_testeo,y_pred))  
-    print(classification_report(y_testeo,y_pred))
-    print("\n*** ACCURACY **************")
-    accuracy = accuracy_score(y_testeo, y_pred)
-    print(accuracy)
-    y_pred_prob = svclassifier.predict_proba(X_testeo)[:,1]
-    fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
-    plt.title('ROC curve for SVM gaussian')
-    plt.xlabel('False Positive Rate (1 - Specificity)')
-    plt.ylabel('True Positive Rate (Sensitivity)')
-    plt.grid(True)
-    plt.savefig('SVMgauss'+str(name)+'.png')
-    auc = roc_auc_score(y_testeo, y_pred_prob)
-    print("****** AUC SVM GAUSSIAN "+str(name)+" *********")
-    print(auc)
-    
-    """
     c = 1.11
     gamma = 0.09
     svclassifier = SVC(kernel='rbf', C=c, gamma=gamma, probability=True)
@@ -222,15 +174,10 @@ def SVMgaussian(X_entreno,y_entreno,X_testeo, y_testeo, name):
     print(accuracy)
     y_pred_prob = svclassifier.predict_proba(X_testeo)[:,1]
     fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
-    plt.title('ROC curve for SVM gaussian')
-    plt.xlabel('False Positive Rate (1 - Specificity)')
-    plt.ylabel('True Positive Rate (Sensitivity)')
-    plt.grid(True)
-    plt.savefig('SVMgauss'+str(name)+'.png')
     auc = roc_auc_score(y_testeo, y_pred_prob)
     print("****** AUC SVM GAUSSIAN "+str(name)+" *********")
     print(auc)
+    return (fpr,tpr)
     
     
 def SVMsigmoid(X_entreno,y_entreno,X_testeo, y_testeo,name):
@@ -247,15 +194,10 @@ def SVMsigmoid(X_entreno,y_entreno,X_testeo, y_testeo,name):
     print(accuracy)
     y_pred_prob = svclassifier.predict_proba(X_testeo)[:,1]
     fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
-    plt.title('ROC curve for SVM sigmoid')
-    plt.xlabel('False Positive Rate (1 - Specificity)')
-    plt.ylabel('True Positive Rate (Sensitivity)')
-    plt.grid(True)
-    plt.savefig('SVMsigmoid'+str(name)+'.png')
     auc = roc_auc_score(y_testeo, y_pred_prob)
     print("****** AUC SVM SIGMOID "+str(name)+" *********")
     print(auc)
+    return (fpr,tpr)
     
     
 def logisticReg(X_entreno,y_entreno,X_testeo, y_testeo,name):
@@ -270,14 +212,10 @@ def logisticReg(X_entreno,y_entreno,X_testeo, y_testeo,name):
     print(accuracy)
     y_pred_prob = logreg.predict_proba(X_testeo)[:,1]
     fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
-    plt.title('ROC curve for logistic regression')
-    plt.xlabel('False Positive Rate (1 - Specificity)')
-    plt.ylabel('True Positive Rate (Sensitivity)')
-    plt.grid(True)
     auc = roc_auc_score(y_testeo, y_pred_prob)
     print("****** AUC LOGISCTIC REGRESSION "+str(name)+" *********")
     print(auc)
+    return (fpr,tpr)
 
 def randomForest(X_entreno,y_entreno,X_testeo, y_testeo,name):
     classifier=RandomForestClassifier(n_estimators=100)
@@ -291,14 +229,28 @@ def randomForest(X_entreno,y_entreno,X_testeo, y_testeo,name):
     print(accuracy)
     y_pred_prob = classifier.predict_proba(X_testeo)[:,1]
     fpr, tpr, thresholds = roc_curve(y_testeo, y_pred_prob)
-    plt.plot(fpr, tpr)
+    auc = roc_auc_score(y_testeo, y_pred_prob)
+    print("****** AUC RANDOM FOREST "+str(name)+" *********")
+    print(auc)
+    return (fpr,tpr)
+
+def plottingROC(fpr):
+    fig, ax = plt.subplots()
+    ax.plot(fpr[0][0], fpr[0][1], 'crimson', label='NB-Multinomial')
+    ax.plot(fpr[1][0], fpr[1][1], 'black', label='NB-Gaussian')
+    ax.plot(fpr[2][0], fpr[2][1], 'azure', label='SVM lineal')
+    ax.plot(fpr[3][0], fpr[3][1], 'blue', label='SVM poly')
+    ax.plot(fpr[4][0], fpr[4][1], 'brown', label='SVM Gaussian')
+    ax.plot(fpr[5][0], fpr[5][1], 'darkgreen', label='SVM sigmoid')
+    ax.plot(fpr[6][0], fpr[6][1], 'magenta', label='LogReg')
+    ax.plot(fpr[7][0], fpr[7][1], 'red', label='RandForest')
+    leg = ax.legend()
+    ax.legend(loc='down left', frameon=True)
     plt.title('ROC curve for random forest')
     plt.xlabel('False Positive Rate (1 - Specificity)')
     plt.ylabel('True Positive Rate (Sensitivity)')
     plt.grid(True)
-    auc = roc_auc_score(y_testeo, y_pred_prob)
-    print("****** AUC RANDOM FOREST "+str(name)+" *********")
-    print(auc)
+    plt.show()
 
 #original data rawData
 url = open("binaryData.csv","r")
@@ -314,23 +266,17 @@ X_testeo = X_test.iloc[:,0:8].values
 y_testeo = y_test
 
 #from raw data
-#bayesClassifierMultinomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data")
-#bayesClassifierGaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data")
-SVMlineal(X_entreno,y_entreno,X_testeo,y_testeo,"original data")
-#SVMpolynomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data")
-#SVMgaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data")
-#SVMsigmoid(X_entreno,y_entreno,X_testeo,y_testeo,"original data")
-#logisticReg(X_entreno,y_entreno,X_testeo,y_testeo,"original data")
-#randomForest(X_entreno,y_entreno,X_testeo,y_testeo,"original data")
+fprs = []
+fprs.append(bayesClassifierMultinomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+fprs.append(bayesClassifierGaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+fprs.append(SVMlineal(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+fprs.append(SVMpolynomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+fprs.append(SVMgaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+fprs.append(SVMsigmoid(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+fprs.append(logisticReg(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+fprs.append(randomForest(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
 
-threadMultiOrigin = threading.Thread(target=bayesClassifierMultinomial, args=(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-threadGaussOrigin = threading.Thread(target=bayesClassifierGaussian, args=(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-threadSVMlinealOrigin = threading.Thread(target=SVMlineal, args=(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-threadSVMpolyOrigin = threading.Thread(target=SVMpolynomial, args=(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-threadSVMgaussOrigin = threading.Thread(target=SVMgaussian, args=(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-threadSVMsigmoidOrigin = threading.Thread(target=SVMsigmoid, args=(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-threadlogRegOrigin = threading.Thread(target=logisticReg, args=(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-threadRanForOrigin = threading.Thread(target=randomForest, args=(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+plottingROC(fprs)
 
 
 #normalizedData()
@@ -347,24 +293,14 @@ X_testeo = X_test.iloc[:,0:8].values
 y_testeo = y_test
 
 #from normalized data  Xi / sum(Xn)
-#bayesClassifierMultinomial(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data")
-#bayesClassifierGaussian(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data")
-SVMlineal(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data")
-#SVMpolynomial(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data")
-#SVMgaussian(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data")
-#SVMsigmoid(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data")
-#logisticReg(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data")
-#randomForest(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data")
+fprs = []
+"""frps.append(bayesClassifierMultinomial(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
+fprs.append(bayesClassifierGaussian(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
+fprs.append(SVMlineal(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
+fprs.append(SVMpolynomial(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
+fprs.append(SVMgaussian(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
+fprs.append(SVMsigmoid(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
+fprs.append(logisticReg(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
+fprs.append(randomForest(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))"""
 
-threadMultiNormalized = threading.Thread(target=bayesClassifierMultinomial, args=(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
-threadGaussNormalized = threading.Thread(target=bayesClassifierGaussian, args=(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
-threadSVMlinealNormalized = threading.Thread(target=SVMlineal, args=(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
-threadSVMpolyNormalized = threading.Thread(target=SVMpolynomial, args=(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
-threadSVMgaussNormalized = threading.Thread(target=SVMgaussian, args=(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
-threadSVMsigmoidNormalized = threading.Thread(target=SVMsigmoid, args=(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
-threadlogRegNormalized = threading.Thread(target=logisticReg, args=(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
-threadRanForNormalized = threading.Thread(target=randomForest, args=(X_entreno,y_entreno,X_testeo,y_testeo,"Normalized data"))
-
-#threadGaussOrigin.start()
-#plt.show()
-print("FINISHED")
+#plottingROC(fprs)

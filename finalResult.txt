@@ -130,3 +130,59 @@ SVM CLASSIFIER
                         micro avg    0.66      0.66      0.66     18320
                         macro avg    0.70      0.59      0.57     18320
                         weighted avg 0.69      0.66      0.61     18320
+
+
+***** RESULTS SVM LINEAR original data********
+
+[[10397   432]
+ [ 5619  1872]]
+             precision    recall  f1-score   support
+
+          0       0.65      0.96      0.77     10829
+          1       0.81      0.25      0.38      7491
+
+avg / total       0.72      0.67      0.61     18320
+
+
+*** ACCURACY **************
+0.669705240175
+****** AUC SVM LINEAR original data *********
+0.696503992065
+
+
+ ***** RESULTS SVM LINEAR Normalized data********
+
+[[9745  996]
+ [5085 2494]]
+             precision    recall  f1-score   support
+
+          0       0.66      0.91      0.76     10741
+          1       0.71      0.33      0.45      7579
+
+avg / total       0.68      0.67      0.63     18320
+
+
+*** ACCURACY **************
+0.66806768559
+****** AUC SVM LINEAR Normalized data *********
+0.70607203355
+
+
+ ***** RESULTS SVM LINEAR Normalized data********
+
+[[9830  988]
+ [4979 2523]]
+             precision    recall  f1-score   support
+
+          0       0.66      0.91      0.77     10818
+          1       0.72      0.34      0.46      7502
+
+avg / total       0.69      0.67      0.64     18320
+
+
+*** ACCURACY **************
+0.674290393013
+****** AUC SVM LINEAR Normalized data *********
+0.712941607141
+
+
