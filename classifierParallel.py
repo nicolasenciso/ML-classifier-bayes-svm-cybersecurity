@@ -237,16 +237,16 @@ def randomForest(X_entreno,y_entreno,X_testeo, y_testeo,name):
 def plottingROC(fpr):
     fig, ax = plt.subplots()
     ax.plot(fpr[0][0], fpr[0][1], 'crimson', label='NB-Multinomial')
-    ax.plot(fpr[1][0], fpr[1][1], 'black', label='NB-Gaussian')
-    ax.plot(fpr[2][0], fpr[2][1], 'azure', label='SVM lineal')
+    """ax.plot(fpr[1][0], fpr[1][1], 'black', label='NB-Gaussian')
+    ax.plot(fpr[2][0], fpr[2][1], 'darkgreen', label='SVM lineal')
     ax.plot(fpr[3][0], fpr[3][1], 'blue', label='SVM poly')
     ax.plot(fpr[4][0], fpr[4][1], 'brown', label='SVM Gaussian')
     ax.plot(fpr[5][0], fpr[5][1], 'darkgreen', label='SVM sigmoid')
     ax.plot(fpr[6][0], fpr[6][1], 'magenta', label='LogReg')
-    ax.plot(fpr[7][0], fpr[7][1], 'red', label='RandForest')
+    ax.plot(fpr[7][0], fpr[7][1], 'red', label='RandForest')"""
     leg = ax.legend()
-    ax.legend(loc='down left', frameon=True)
-    plt.title('ROC curve for random forest')
+    ax.legend(loc='lower right', frameon=True)
+    plt.title('ROC curve ML classifier')
     plt.xlabel('False Positive Rate (1 - Specificity)')
     plt.ylabel('True Positive Rate (Sensitivity)')
     plt.grid(True)
@@ -267,15 +267,47 @@ y_testeo = y_test
 
 #from raw data
 fprs = []
-fprs.append(bayesClassifierMultinomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-fprs.append(bayesClassifierGaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-fprs.append(SVMlineal(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-fprs.append(SVMpolynomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-fprs.append(SVMgaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-fprs.append(SVMsigmoid(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-fprs.append(logisticReg(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-fprs.append(randomForest(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-
+fptxt = open('txtResults/svmpoly.txt','w')
+#sal = (bayesClassifierMultinomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+#fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
+#sal = (bayesClassifierGaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+#fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
+#sal = (SVMlineal(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+#fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
+sal = (SVMpolynomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
+#sal = (SVMgaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+#fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
+#sal = (SVMsigmoid(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+#fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
+#sal = (logisticReg(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+#fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
+#sal = (randomForest(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+#fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
+fptxt.close()
+fptxt = open('txtResults/svmpoly.txt','r')
+for line in fptxt:
+    newLine = line.split('#') #to get points from txt and put it in fprs array
+    fpr = newLine[0]
+    tpr = newLine[1]
+    fpr = fpr.split('[')
+    tpr = tpr.split('[')
+    fpr = str(fpr[1])
+    tpr = str(tpr[1])
+    fpr = fpr.split(']')
+    tpr = tpr.split(']')
+    fpr = str(fpr[0])
+    tpr = str(tpr[0])
+    fpr = fpr.split(',')
+    tpr = tpr.split(',')
+    newTpr = []
+    newFpr = []
+    for point in tpr:
+        newTpr.append(float(point))
+    for point in fpr:
+        newFpr.append(float(point))
+    fprs.append((newFpr,newTpr))
+fptxt.close()
 plottingROC(fprs)
 
 

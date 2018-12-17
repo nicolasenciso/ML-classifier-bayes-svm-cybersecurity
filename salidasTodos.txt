@@ -1,0 +1,107 @@
+*** ACCURACY GAUSSIAN BAYES **************
+0.643504366812
+
+ ***** RESULTS BAYES GAUSSIAN original data********
+
+[[10279   577]
+ [ 5954  1510]]
+             precision    recall  f1-score   support
+
+          0       0.63      0.95      0.76     10856
+          1       0.72      0.20      0.32      7464
+
+avg / total       0.67      0.64      0.58     18320
+
+****** AUC BAYES GAUSSIAN original data *********
+0.657966634589
+
+*** ACCURACY MULTINOMIAL BAYES **************
+0.653056768559
+
+ ***** RESULTS BAYES MULTINOMIAL original data ********
+
+[[10255   558]
+ [ 5798  1709]]
+             precision    recall  f1-score   support
+
+          0       0.64      0.95      0.76     10813
+          1       0.75      0.23      0.35      7507
+
+avg / total       0.69      0.65      0.59     18320
+
+****** AUC BAYES MULTINOMIAL original data *********
+0.65088640534
+
+ ***** RESULTS LOGISTIC REGRESSION original data********
+
+[[9532 1301]
+ [4408 3079]]
+             precision    recall  f1-score   support
+
+          0       0.68      0.88      0.77     10833
+          1       0.70      0.41      0.52      7487
+
+avg / total       0.69      0.69      0.67     18320
+
+
+*** ACCURACY **************
+0.688373362445
+****** AUC LOGISCTIC REGRESSION original data *********
+0.707206599566
+
+ ***** RESULTS RANDOM FOREST original data********
+
+[[8704 2162]
+ [ 900 6554]]
+             precision    recall  f1-score   support
+
+          0       0.91      0.80      0.85     10866
+          1       0.75      0.88      0.81      7454
+
+avg / total       0.84      0.83      0.83     18320
+
+
+*** ACCURACY **************
+0.832860262009
+****** AUC RANDOM FOREST original data *********
+0.933937629906
+
+***** RESULTS SVM GAUSSIAN C=1.11 gamma=0.09*****original data***
+
+[[9921  939]
+ [2824 4636]]
+             precision    recall  f1-score   support
+
+          0       0.78      0.91      0.84     10860
+          1       0.83      0.62      0.71      7460
+
+avg / total       0.80      0.79      0.79     18320
+
+
+*** ACCURACY **************
+0.794596069869
+****** AUC SVM GAUSSIAN original data *********
+0.870937300964
+
+[0 0 0 ..., 0 0 0]
+[1 0 0 ..., 0 0 0]
+
+ ***** RESULTS SVM SIGMOID original data********
+
+[[10848     0]
+ [ 7472     0]]
+/home/superexec/.local/lib/python2.7/site-packages/sklearn/metrics/classification.py:1135: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+             precision    recall  f1-score   support
+
+          0       0.59      1.00      0.74     10848
+          1       0.00      0.00      0.00      7472
+
+avg / total       0.35      0.59      0.44     18320
+
+
+*** ACCURACY **************
+0.592139737991
+****** AUC SVM SIGMOID original data *********
+0.390236405688
+
