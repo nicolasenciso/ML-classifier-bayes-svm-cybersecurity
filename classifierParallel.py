@@ -267,15 +267,15 @@ y_testeo = y_test
 
 #from raw data
 fprs = []
-fptxt = open('txtResults/svmpoly.txt','w')
+fptxt = open('txtResults/svmlineal.txt','w')
 #sal = (bayesClassifierMultinomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
 #fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
 #sal = (bayesClassifierGaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
 #fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
-#sal = (SVMlineal(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
-#fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
-sal = (SVMpolynomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+sal = (SVMlineal(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
 fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
+#sal = (SVMpolynomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
+#fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
 #sal = (SVMgaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
 #fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
 #sal = (SVMsigmoid(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
@@ -285,7 +285,7 @@ fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
 #sal = (randomForest(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
 #fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
 fptxt.close()
-fptxt = open('txtResults/svmpoly.txt','r')
+fptxt = open('txtResults/svmlineal.txt','r')
 for line in fptxt:
     newLine = line.split('#') #to get points from txt and put it in fprs array
     fpr = newLine[0]
