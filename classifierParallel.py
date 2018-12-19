@@ -236,14 +236,14 @@ def randomForest(X_entreno,y_entreno,X_testeo, y_testeo,name):
 
 def plottingROC(fpr):
     fig, ax = plt.subplots()
-    ax.plot(fpr[0][0], fpr[0][1], 'crimson', label='NB-Multinomial')
+    ax.plot(fpr[0][0], fpr[0][1], 'purple', label='NB-Multinomial')
     ax.plot(fpr[1][0], fpr[1][1], 'black', label='NB-Gaussian')
-    """ax.plot(fpr[2][0], fpr[2][1], 'darkgreen', label='SVM lineal')
+    ax.plot(fpr[2][0], fpr[2][1], 'darkgreen', label='SVM lineal')
     #ax.plot(fpr[3][0], fpr[3][1], 'blue', label='SVM poly')
-    ax.plot(fpr[4][0], fpr[3][1], 'blue', label='SVM Gaussian')
-    ax.plot(fpr[5][0], fpr[4][1], 'darkgreen', label='SVM sigmoid')
-    ax.plot(fpr[6][0], fpr[5][1], 'magenta', label='LogReg')
-    ax.plot(fpr[7][0], fpr[6][1], 'red', label='RandForest')"""
+    ax.plot(fpr[3][0], fpr[3][1], 'blue', label='SVM Gaussian')
+    ax.plot(fpr[4][0], fpr[4][1], 'grey', label='SVM sigmoid')
+    ax.plot(fpr[5][0], fpr[5][1], 'orange', label='LogReg')
+    ax.plot(fpr[6][0], fpr[6][1], 'red', label='RandForest')
     leg = ax.legend()
     ax.legend(loc='lower right', frameon=True)
     plt.title('ROC curve ML classifier')
