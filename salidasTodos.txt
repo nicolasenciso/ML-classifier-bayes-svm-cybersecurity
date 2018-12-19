@@ -105,3 +105,22 @@ avg / total       0.35      0.59      0.44     18320
 ****** AUC SVM SIGMOID original data *********
 0.390236405688
 
+
+ ***** RESULTS SVM LINEAR original data********
+
+[[10442   449]
+ [ 5511  1918]]
+              precision    recall  f1-score   support
+
+           0       0.65      0.96      0.78     10891
+           1       0.81      0.26      0.39      7429
+
+   micro avg       0.67      0.67      0.67     18320
+   macro avg       0.73      0.61      0.58     18320
+weighted avg       0.72      0.67      0.62     18320
+
+
+*** ACCURACY **************
+0.6746724890829694
+****** AUC SVM LINEAR original data *********
+0.6935803462445124

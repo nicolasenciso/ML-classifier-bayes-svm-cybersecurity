@@ -267,7 +267,7 @@ y_testeo = y_test
 
 #from raw data
 fprs = []
-fptxt = open('txtResults/svmpoly.txt','w')
+fptxt = open('txtResults/svmlineal.txt','w')
 #sal = (bayesClassifierMultinomial(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
 #fptxt.writelines(str(sal[0].tolist())+'#'+str(sal[1].tolist())+'\n')
 #sal = (bayesClassifierGaussian(X_entreno,y_entreno,X_testeo,y_testeo,"original data"))
