@@ -13,7 +13,7 @@ X = df.iloc[:,0:8].values
 y = df.iloc[:,8].values
 
 X_std = StandardScaler().fit_transform(X)
-
+"""
 tsne = TSNE(n_components=3, random_state=0)
 x_tsne = tsne.fit_transform(X_std)
 anomalousX3,anomalousY3,anomalousZ3,normalX3,normalY3,normalZ3 = [],[],[],[],[],[]
@@ -40,7 +40,7 @@ ax.set_zlabel('Z')
 plt.legend(loc='lower left')
 plt.tight_layout()
 plt.title('t-SNE 3D')
-
+"""
 
 tsne = TSNE(n_components=2, random_state=0)
 x_tsne = tsne.fit_transform(X_std)
@@ -55,7 +55,7 @@ for tipo in y:
         normalY.append(x_tsne[count][1])
     count += 1
 
-
+"""
 plt.figure()
 plt.scatter(x=anomalousX,y=anomalousY,c='blue',marker='o',label='Anomalous')
 plt.scatter(x=normalX,y=normalY,c='red',marker='o',label='Normal')
@@ -65,7 +65,7 @@ plt.legend(loc='lower left')
 plt.tight_layout()
 plt.title('t-SNE')
 plt.grid()
-
+"""
 markers=('o', 'o')
 color_map = {0:'red', 1:'blue'}
 plt.figure()
@@ -74,7 +74,7 @@ for idx, cl in enumerate(np.unique(y)):
 plt.xlabel('X in t-SNE')
 plt.ylabel('Y in t-SNE')
 plt.legend(loc='upper left')
-plt.title('t-SNE visualization of test data')
+plt.title('t-SNE visualization')
 
 plt.show()
 
